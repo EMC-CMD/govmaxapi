@@ -5,6 +5,7 @@ import (
 	"crypto/tls"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 )
 
@@ -45,11 +46,20 @@ func (c Client) APICall(httpMethod, apiPath string, reqStruct interface{}, respS
 	if err != nil {
 		return fmt.Errorf("error making http call %s\n", err)
 	}
-	defer resp.Body.Close()
+	//no content, no error :)
+	if resp.StatusCode == 204 {
+		return nil
+	}
 
-	err = json.NewDecoder(resp.Body).Decode(respStruct)
+	defer resp.Body.Close()
+	respBody, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return fmt.Errorf("error reading create json response %s\n", err)
+		return fmt.Errorf("error reading response body %s\n", err)
+	}
+
+	err = json.Unmarshal(respBody, respStruct)
+	if err != nil {
+		return fmt.Errorf("error reading json response %s. Response Body %s\n", err, respBody)
 	}
 
 	return nil
