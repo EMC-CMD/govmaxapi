@@ -7,5 +7,6 @@ import "github.com/emc-dojo/govmaxapi/model"
 //POST /provisioning/symmetrix/{symmetrixId}/hostgroup
 
 func (c Client) CreatePortGroup(p model.CreatePortGroupParam) error {
-	return c.APICall("POST", "/provisioning/symmetrix/{symmetrixId}/portgroup", p)
+	// return c.APICall("POST", "/provisioning/symmetrix/{symmetrixId}/portgroup", p)
+	return nil
 }
