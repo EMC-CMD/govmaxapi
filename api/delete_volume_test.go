@@ -15,8 +15,8 @@ var _ = Describe("DeleteVolume", func() {
 	})
 
 	Context("When passing in a correct volumeID", func() {
-		XIt("Return nothing", func() {
-			volumeID := "000E0"
+		FIt("Return nothing", func() {
+			volumeID := "000E4"
 			err := client.DeleteVolume(symmetrixID, volumeID)
 			Expect(err).ToNot(HaveOccurred())
 		})
