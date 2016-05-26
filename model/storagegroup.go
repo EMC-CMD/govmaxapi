@@ -7,6 +7,7 @@ type EditStorageGroupParam struct {
 type EditStorageGroupActionParam struct {
 	ExpandStorageGroupParam ExpandStorageGroupParam `json:"expandStorageGroupParam,omitempty"`
 	RemoveVolumeParam       RemoveVolumeParam       `json:"removeVolumeParam,omitempty"`
+	AddVolumeParam          AddVolumeParam          `json:"addVolumeParam,omitempty"`
 }
 
 type ExpandStorageGroupParam struct {
@@ -39,5 +40,9 @@ type EditStorageGroupResponse struct {
 }
 
 type RemoveVolumeParam struct {
+	VolumeID []string `json:"volumeId"`
+}
+
+type AddVolumeParam struct {
 	VolumeID []string `json:"volumeId"`
 }
