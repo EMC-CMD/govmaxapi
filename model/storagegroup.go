@@ -5,7 +5,8 @@ type EditStorageGroupParam struct {
 }
 
 type EditStorageGroupActionParam struct {
-	ExpandStorageGroupParam ExpandStorageGroupParam `json:"expandStorageGroupParam"`
+	ExpandStorageGroupParam ExpandStorageGroupParam `json:"expandStorageGroupParam,omitempty"`
+	RemoveVolumeParam       RemoveVolumeParam       `json:"removeVolumeParam,omitempty"`
 }
 
 type ExpandStorageGroupParam struct {
@@ -35,4 +36,8 @@ type EditStorageGroupResponse struct {
 	DeviceEmulation   string  `json:"device_emulation"`
 	Type              string  `json:"type"`
 	Unprotected       bool    `json:"unprotected"`
+}
+
+type RemoveVolumeParam struct {
+	VolumeID []string `json:"volumeId"`
 }
